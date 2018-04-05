@@ -8,10 +8,6 @@ int Main1[6700][200],Main2[4000][200],n,m,N,M;
 int count[193][6][11],freq[11];
 float prob[193][6][11];
 
-void find_probability(int x,int y)
-{
-	int i,j;
-}
 void scan(FILE *f, int A[][200],int *a,int *b)
 {
 	int i=0,j=0;
@@ -93,6 +89,8 @@ int main()
 			{
 				sum+=log(prob[k][Main2[i][k]][j]);
 			}
+			sum+=log((float)freq[j]/6770.0);
+
 			if(j==0)
 				max=sum;
 			else

@@ -33,9 +33,9 @@ int error(int array1[][30],int array2[][200],int q,int w)
 			}
 		}
 		val1[i]=(val1[i]+err);
-		printf("%f  ",val1[i]);
+		//printf("%f\n",val1[i]/6670.0);
 	}
-	printf("-----------------\n");
+	//printf("-----------------\n");
 }
 int cmp ( const void *pa, const void *pb ) {
 	const float (*a)[2] = pa;
@@ -163,21 +163,21 @@ int finding_k()
 		}
 		else if(i==2)
 		{	
-			printf("i=1\n");
+			//printf("i=1\n");
 			error(array,D1,25,n1);
 			glob=-1;
 			one_by_one(D1,D3,D2,0,n1,n3,n1);
 		}
 		else if(i==3)
 		{
-			printf("i=2\n");
+			//printf("i=2\n");
 			error(array,D2,25,n2);
 			glob=-1;
 			one_by_one(D1,D2,D3,0,n1,n2,n3);
 		}
 		else if(i==4)
 		{	
-			printf("i=3\n");
+			//printf("i=3\n");
 			error(array,D3,25,n3);
 			glob=-1;
 			for(z=1;z<=25;z++)
@@ -188,7 +188,7 @@ int finding_k()
 				{
 					rate=val1[z];
 					k_val=z;
-					printf("%d\n",z );
+					//printf("%d\n",z );
 				}
 			}
 		}
@@ -250,16 +250,16 @@ int main()
 	partion();
 	int k,j,sum=0;
 	k=finding_k();
-	printf("\nk value%d %f\n",k,val1[k]);
-	double accuracy=(6670-val1[k])/6670;
-	printf("%lf\n",accuracy);
+	printf("Value of k=%d and error %d\n",k,(int)val1[k]);
+	double accuracy=(6670-val1[k])/6670*100;
+	printf("Accuracy while training %lf\n",accuracy);
 	glob=-1;
 	FILE *fstream2= fopen("pp_tes.dat","r"); 
 	scan(fstream2,Main2);
 	one_by_one(Main1,D2,Main2,k,col1,0,col2);
 	error(array,Main2,k,col2);
 	accuracy=(3333-val1[k])/3333*100;
-	printf("Accuracy:%lf",accuracy);
+	printf("Accuracy while testing %lf\n",accuracy);
 	
 	return 0;
 
